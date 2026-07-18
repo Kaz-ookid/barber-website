@@ -1,4 +1,4 @@
-import { Reveal } from "../components/ui/Reveal";
+import { Reveal, RevealSection } from "../components/ui/Reveal";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { site, team } from "../data/site";
 
@@ -7,7 +7,7 @@ export function Team() {
   const others = team.filter((member) => !member.featured);
 
   return (
-    <section id="equipe" className="relative py-24 md:py-32">
+    <RevealSection id="equipe" className="relative py-24 md:py-32">
       <div className="container-x">
         <SectionHeading
           kicker="L'équipe"
@@ -84,6 +84,6 @@ export function Team() {
           </div>
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }

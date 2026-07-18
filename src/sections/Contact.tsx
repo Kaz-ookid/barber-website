@@ -1,10 +1,10 @@
-import { Reveal } from "../components/ui/Reveal";
+import { Reveal, RevealSection } from "../components/ui/Reveal";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { hours, images, site } from "../data/site";
 
 export function Contact() {
   return (
-    <section id="contact" className="py-24 md:py-32">
+    <RevealSection id="contact" className="py-24 md:py-32">
       <div className="container-x">
         <SectionHeading
           kicker="Contact"
@@ -96,6 +96,6 @@ export function Contact() {
           </Reveal>
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }

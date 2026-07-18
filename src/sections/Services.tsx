@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Reveal } from "../components/ui/Reveal";
+import { Reveal, RevealSection } from "../components/ui/Reveal";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { services, site } from "../data/site";
 
@@ -8,7 +8,7 @@ export function Services() {
   const hiddenCount = services.filter((s, i) => !s.featured && i >= 3).length;
 
   return (
-    <section id="prestations" className="py-24 md:py-32">
+    <RevealSection id="prestations" className="py-24 md:py-32">
       <div className="container-x">
         <SectionHeading
           kicker="Prestations"
@@ -76,6 +76,6 @@ export function Services() {
           </p>
         </Reveal>
       </div>
-    </section>
+    </RevealSection>
   );
 }

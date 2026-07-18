@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Reveal } from "../components/ui/Reveal";
+import { Reveal, RevealSection } from "../components/ui/Reveal";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { images } from "../data/site";
 
@@ -28,7 +28,7 @@ export function SalonIntro() {
   const [active, setActive] = useState(0);
 
   return (
-    <section id="salon" className="relative py-24 md:py-32">
+    <RevealSection id="salon" className="relative py-24 md:py-32">
       <div className="container-x">
         <SectionHeading
           kicker="Le salon"
@@ -130,6 +130,6 @@ export function SalonIntro() {
           </div>
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }

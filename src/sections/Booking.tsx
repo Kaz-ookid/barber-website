@@ -1,9 +1,9 @@
-import { Reveal } from "../components/ui/Reveal";
+import { Reveal, RevealSection } from "../components/ui/Reveal";
 import { site } from "../data/site";
 
 export function Booking() {
   return (
-    <section id="reserver" className="relative py-20 md:py-28">
+    <RevealSection id="reserver" className="relative py-20 md:py-28">
       <div className="container-x">
         <Reveal>
           <div className="card relative mx-auto max-w-4xl overflow-hidden bg-gradient-to-b from-gold/8 via-transparent to-transparent px-6 py-14 text-center md:px-16 md:py-20">
@@ -34,6 +34,6 @@ export function Booking() {
           </div>
         </Reveal>
       </div>
-    </section>
+    </RevealSection>
   );
 }

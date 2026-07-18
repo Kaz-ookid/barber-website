@@ -1,5 +1,5 @@
 import { Coverflow } from "../components/ui/Coverflow";
-import { Reveal } from "../components/ui/Reveal";
+import { Reveal, RevealSection } from "../components/ui/Reveal";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import type { Product } from "../data/site";
 import { products } from "../data/site";
@@ -37,7 +37,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 
 export function Shop() {
   return (
-    <section id="boutique" className="py-24 md:py-32">
+    <RevealSection id="boutique" className="py-24 md:py-32">
       <div className="container-x">
         <SectionHeading
           kicker="Boutique"
@@ -69,6 +69,6 @@ export function Shop() {
           />
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }

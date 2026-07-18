@@ -1,5 +1,5 @@
 import { Coverflow } from "../components/ui/Coverflow";
-import { Reveal } from "../components/ui/Reveal";
+import { Reveal, RevealSection } from "../components/ui/Reveal";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { StoryBubble } from "../components/ui/StoryBubble";
 import type { GalleryItem } from "../data/site";
@@ -28,7 +28,7 @@ function Card({ item }: { item: GalleryItem }) {
 
 export function Gallery() {
   return (
-    <section id="travail" className="py-24 md:py-32">
+    <RevealSection id="travail" className="py-24 md:py-32">
       <div className="container-x">
         <SectionHeading
           kicker="Le travail"
@@ -82,6 +82,6 @@ export function Gallery() {
           </div>
         </Reveal>
       </div>
-    </section>
+    </RevealSection>
   );
 }
