@@ -1,21 +1,31 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 interface MarqueeProps {
   children: ReactNode;
   duration?: number;
-  reverse?: boolean;
   className?: string;
 }
 
-export function Marquee({ children, duration = 28, reverse, className }: MarqueeProps) {
+/**
+ * Seamless marquee: two identical halves, each repeating the content three
+ * times so the loop never shows a gap, even on ultrawide screens.
+ */
+export function Marquee({ children, duration = 40, className }: MarqueeProps) {
+  const half = (
+    <div className="flex shrink-0 items-center">
+      {children}
+      {children}
+      {children}
+    </div>
+  );
   return (
     <div className={`overflow-hidden whitespace-nowrap ${className ?? ""}`} aria-hidden>
       <div
-        className={`animate-marquee inline-flex w-max items-center ${reverse ? "marquee-reverse" : ""}`}
-        style={{ "--marquee-duration": `${duration}s` } as React.CSSProperties}
+        className="animate-marquee flex w-max items-center"
+        style={{ "--marquee-duration": `${duration}s` } as CSSProperties}
       >
-        <div className="inline-flex items-center">{children}</div>
-        <div className="inline-flex items-center">{children}</div>
+        {half}
+        {half}
       </div>
     </div>
   );

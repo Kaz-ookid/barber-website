@@ -1,16 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #0c0a09;
-  --color-coal: #171310;
-  --color-bone: #efe7da;
-  --color-smoke: #9d938a;
-  --color-blade: #e8492e;
+  --color-night: #0b0b0e;
+  --color-panel: #131217;
+  --color-cream: #f3f0e9;
+  --color-mist: #a49f96;
+  --color-gold: #cfa15f;
+  --color-gold-soft: #e8cba0;
 
-  --font-display: "Anton", sans-serif;
-  --font-serif: "Instrument Serif", Georgia, serif;
-  --font-sans: "Space Grotesk", sans-serif;
-  --font-mono: "Space Mono", monospace;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
 }
 
 html {
@@ -27,54 +26,91 @@ html.lenis body {
 }
 
 body {
-  background: var(--color-ink);
-  color: var(--color-bone);
+  background: var(--color-night);
+  color: var(--color-cream);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 ::selection {
-  background: var(--color-blade);
-  color: var(--color-ink);
+  background: var(--color-gold);
+  color: var(--color-night);
 }
 
-/* Outlined display text */
-.text-stroke {
-  -webkit-text-stroke: 1.5px var(--color-bone);
-  color: transparent;
-}
-
-.text-stroke-blade {
-  -webkit-text-stroke: 1.5px var(--color-blade);
-  color: transparent;
-}
-
-@media (min-width: 768px) {
-  .text-stroke,
-  .text-stroke-blade {
-    -webkit-text-stroke-width: 2px;
+/* Content container: keeps everything readable on ultrawide screens */
+@utility container-x {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 72rem;
+  padding-inline: 1.25rem;
+  @media (min-width: 768px) {
+    padding-inline: 2.5rem;
   }
 }
 
-/* Film grain overlay */
-.grain::after {
-  content: "";
-  position: fixed;
-  inset: -100%;
-  z-index: 100;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.05;
-  animation: grain-shift 0.4s steps(4) infinite;
+/* Glass card */
+@utility card {
+  border-radius: 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--color-cream) 8%, transparent);
+  background: color-mix(in srgb, var(--color-cream) 3%, transparent);
 }
 
-@keyframes grain-shift {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(-2%, 3%); }
-  50% { transform: translate(3%, -2%); }
-  75% { transform: translate(-3%, -3%); }
-  100% { transform: translate(2%, 2%); }
+/* Primary pill button */
+@utility btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(to bottom, var(--color-gold-soft), var(--color-gold));
+  color: var(--color-night);
+  font-weight: 700;
+  padding: 0.9rem 1.75rem;
+  font-size: 0.9rem;
+  box-shadow: 0 8px 30px rgb(207 161 95 / 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+.btn-gold:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow: 0 12px 36px rgb(207 161 95 / 0.3);
+}
+
+/* Ghost pill button */
+@utility btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--color-cream) 20%, transparent);
+  color: var(--color-cream);
+  font-weight: 600;
+  padding: 0.9rem 1.75rem;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.btn-ghost:hover {
+  border-color: color-mix(in srgb, var(--color-cream) 45%, transparent);
+  background: color-mix(in srgb, var(--color-cream) 5%, transparent);
+}
+
+/* Small uppercase label */
+@utility eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+/* Soft ambient glow blob: position with inline styles */
+@utility glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  pointer-events: none;
 }
 
 /* Marquee */
@@ -84,18 +120,11 @@ body {
 }
 
 .animate-marquee {
-  animation: marquee var(--marquee-duration, 28s) linear infinite;
-}
-
-.marquee-reverse {
-  animation-direction: reverse;
+  animation: marquee var(--marquee-duration, 40s) linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee {
-    animation: none;
-  }
-  .grain::after {
     animation: none;
   }
   html {
@@ -103,50 +132,19 @@ body {
   }
 }
 
-/* Custom cursor */
-@media (pointer: fine) {
-  .cursor-dot,
-  .cursor-ring {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 200;
-    pointer-events: none;
-    border-radius: 9999px;
-    will-change: transform;
-  }
-  .cursor-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--color-blade);
-  }
-  .cursor-ring {
-    width: 36px;
-    height: 36px;
-    border: 1px solid color-mix(in srgb, var(--color-bone) 45%, transparent);
-    transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
-  }
-  .cursor-ring.is-hover {
-    width: 64px;
-    height: 64px;
-    border-color: var(--color-blade);
-  }
-}
-
-/* Hide native scrollbar styling refinement */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-ink);
+  background: var(--color-night);
 }
 ::-webkit-scrollbar-thumb {
-  background: #2c2622;
+  background: #26242b;
   border-radius: 5px;
 }
 
-/* Keyboard focus */
 :focus-visible {
-  outline: 2px solid var(--color-blade);
+  outline: 2px solid var(--color-gold);
   outline-offset: 3px;
 }

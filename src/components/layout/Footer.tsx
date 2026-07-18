@@ -1,45 +1,40 @@
 import { site } from "../../data/site";
 
+const socials = [
+  { label: "Instagram", href: site.instagram },
+  { label: "TikTok", href: site.tiktok },
+  { label: "YouTube", href: site.youtube },
+];
+
 export function Footer() {
   return (
-    <footer className="border-t border-bone/10 px-5 pb-10 pt-16 md:px-10">
-      <p className="font-display text-[12.5vw] leading-none uppercase text-bone/10 select-none" aria-hidden>
-        Burtin Barber
-      </p>
-      <div className="mt-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-        <div className="font-mono text-xs uppercase tracking-[0.2em] text-smoke">
-          <p>{site.address}</p>
-          <a href={site.phoneHref} className="mt-2 block transition-colors hover:text-bone">
-            {site.phone}
-          </a>
+    <footer className="border-t border-cream/8">
+      <div className="container-x flex flex-col gap-8 py-12 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p className="font-display text-lg font-semibold">
+            Burtin <span className="italic text-gold">Barber</span>
+          </p>
+          <p className="mt-2 text-sm text-mist">
+            {site.address} ·{" "}
+            <a href={site.phoneHref} className="transition-colors hover:text-cream">
+              {site.phone}
+            </a>
+          </p>
         </div>
-        <div className="flex gap-6 font-mono text-xs uppercase tracking-[0.2em]">
-          <a
-            href={site.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-smoke transition-colors hover:text-blade"
-          >
-            Instagram
-          </a>
-          <a
-            href={site.tiktok}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-smoke transition-colors hover:text-blade"
-          >
-            TikTok
-          </a>
-          <a
-            href={site.youtube}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-smoke transition-colors hover:text-blade"
-          >
-            YouTube
-          </a>
+        <div className="flex gap-6">
+          {socials.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-mist transition-colors hover:text-gold"
+            >
+              {social.label}
+            </a>
+          ))}
         </div>
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-smoke">
+        <p className="text-sm text-mist">
           © {new Date().getFullYear()} {site.name} · {site.city}
         </p>
       </div>

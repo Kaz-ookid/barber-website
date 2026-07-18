@@ -1,112 +1,82 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { Marquee } from "../components/ui/Marquee";
-import { images, marqueeWords, site } from "../data/site";
+import { motion } from "framer-motion";
+import { images, site } from "../data/site";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+const fadeUp = (delay: number) => ({
+  initial: { opacity: 0, y: 28 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, delay, ease },
+});
+
 export function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
-  const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
   return (
-    <section ref={ref} className="relative flex min-h-svh flex-col overflow-hidden">
-      <motion.div className="absolute inset-0 -z-10" style={{ y: bgY }}>
-        <img
-          src={images.hero}
-          alt="Rudy Burtin au travail, ciseaux à la main"
-          className="h-[120%] w-full object-cover"
-          fetchPriority="high"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/40 to-ink" />
-      </motion.div>
+    <section className="relative overflow-hidden">
+      <div className="glow left-[-10%] top-[-10%] h-[34rem] w-[34rem] bg-gold/15" />
+      <div className="glow right-[-8%] top-[30%] h-[28rem] w-[28rem] bg-[#8a5a2b]/20" />
 
-      <motion.div style={{ opacity: fade }} className="flex flex-1 flex-col justify-end px-5 pb-6 pt-28 md:px-10">
-        <div className="mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-bone/80">
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 0.6 }}
-          >
-            ★ {site.rating}/5 · {site.reviews} avis
-          </motion.span>
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.15, duration: 0.6 }}
-            className="hidden sm:inline"
-          >
-            · Av. de Tivoli 6, Lausanne
-          </motion.span>
-        </div>
-
-        <h1 className="font-display uppercase leading-[0.85]">
-          <span className="block overflow-hidden">
-            <motion.span
-              className="block text-[20vw] text-bone md:text-[17vw]"
-              initial={{ y: "110%" }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.9, ease, delay: 0.15 }}
-            >
-              Burtin
-            </motion.span>
-          </span>
-          <span className="block overflow-hidden">
-            <motion.span
-              className="text-stroke block text-[20vw] md:text-[17vw]"
-              initial={{ y: "110%" }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.9, ease, delay: 0.3 }}
-            >
-              Barber
-            </motion.span>
-          </span>
-        </h1>
-
-        <div className="mt-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.7, ease }}
-            className="max-w-md font-serif text-2xl italic text-bone/90 md:text-3xl"
-          >
-            Une coupe pensée pour ton visage, pas pour la tendance.
+      <div className="container-x grid min-h-svh items-center gap-12 pb-16 pt-32 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:pt-36">
+        <div>
+          <motion.p {...fadeUp(0.05)} className="eyebrow">
+            Salon de barbier · {site.city}
           </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.85, duration: 0.7, ease }}
-            className="flex flex-wrap items-center gap-4"
+          <motion.h1
+            {...fadeUp(0.15)}
+            className="font-display mt-5 text-5xl font-medium leading-[1.05] tracking-tight sm:text-6xl xl:text-7xl"
           >
-            <a
-              href={site.planityUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group rounded-full bg-blade px-8 py-4 font-mono text-sm uppercase tracking-[0.2em] text-ink transition-transform hover:scale-105"
-            >
-              Réserver
-              <span className="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
+            Burtin <span className="italic text-gold">Barber</span>
+            <span className="block text-cream/90">le salon de Rudy.</span>
+          </motion.h1>
+          <motion.p {...fadeUp(0.3)} className="mt-6 max-w-lg text-lg leading-relaxed text-mist">
+            Une coupe pensée pour ton visage, pas pour la tendance. Coupes
+            sur-mesure, dégradés précis, barbe sculptée, au cœur de Lausanne.
+          </motion.p>
+          <motion.div {...fadeUp(0.45)} className="mt-9 flex flex-wrap items-center gap-4">
+            <a href="#reserver" className="btn-gold">
+              Réserver un créneau
             </a>
-            <a
-              href="#travail"
-              className="rounded-full border border-bone/40 px-8 py-4 font-mono text-sm uppercase tracking-[0.2em] text-bone transition-colors hover:border-bone hover:bg-bone hover:text-ink"
-            >
+            <a href="#travail" className="btn-ghost">
               Voir le travail
             </a>
           </motion.div>
-        </div>
-      </motion.div>
-
-      <div className="border-y border-bone/10 bg-ink/60 py-4 backdrop-blur-sm">
-        <Marquee duration={30}>
-          {marqueeWords.map((word) => (
-            <span key={word} className="mx-6 flex items-center gap-12 font-display text-xl uppercase tracking-wider text-bone/70">
-              {word} <span className="text-blade">✂</span>
+          <motion.div {...fadeUp(0.6)} className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-mist">
+            <span className="flex items-center gap-2">
+              <span className="text-gold">★★★★★</span>
+              {site.rating}/5 · {site.reviews} avis
             </span>
-          ))}
-        </Marquee>
+            <span>Ouvert dès 7h40</span>
+            <span>Av. de Tivoli 6</span>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.35, ease }}
+          className="relative mx-auto w-full max-w-md lg:max-w-none"
+        >
+          <div className="absolute -inset-6 rounded-[2.5rem] bg-gold/10 blur-2xl" />
+          <img
+            src={images.hero}
+            alt="Travail aux ciseaux au salon Burtin Barber"
+            className="relative aspect-[4/5] w-full rounded-[2rem] border border-cream/10 object-cover"
+            fetchPriority="high"
+          />
+          <div className="card absolute bottom-5 left-5 right-5 flex items-center justify-between bg-night/70 px-5 py-4 backdrop-blur-md">
+            <div>
+              <p className="text-sm font-semibold">{site.owner}</p>
+              <p className="text-xs text-mist">Fondateur · une vidéo par jour</p>
+            </div>
+            <a
+              href={site.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold text-gold transition-opacity hover:opacity-75"
+            >
+              {site.handle}
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
