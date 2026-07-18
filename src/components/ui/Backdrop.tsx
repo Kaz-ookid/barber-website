@@ -61,20 +61,26 @@ void main() {
   float settle = smoothstep(0.85 * vh, 2.1 * vh, yPage);
   vec3 color = mix(NIGHT, DEEP, settle * 0.85);
 
+  /* Portrait screens: shrink and dim the pools so the light stays on the
+     edges instead of washing the whole viewport gold. */
+  float narrow = smoothstep(0.95, 0.5, u_res.x / u_res.y);
+  float rs = 1.0 - narrow * 0.42;
+
   /* Warm pools, page-anchored with slight parallax. */
   float light = 0.0;
-  light += 0.105 * pool(frag, 0.06, 0.12, 0.95, 0.06);
-  light += 0.085 * pool(frag, 0.97, 0.45, 0.85, 0.10);
-  light += 0.050 * pool(frag, -0.04, 2.60, 0.95, 0.05);
-  light += 0.048 * pool(frag, 1.05, 4.60, 0.90, 0.09);
-  light += 0.042 * pool(frag, -0.02, 6.60, 0.85, 0.05);
-  light += 0.050 * pool(frag, 0.93, 8.30, 0.80, 0.08);
+  light += 0.105 * pool(frag, 0.06, 0.12, 0.95 * rs, 0.06);
+  light += 0.085 * pool(frag, 0.97, 0.45, 0.85 * rs, 0.10);
+  light += 0.050 * pool(frag, -0.04, 2.60, 0.95 * rs, 0.05);
+  light += 0.048 * pool(frag, 1.05, 4.60, 0.90 * rs, 0.09);
+  light += 0.042 * pool(frag, -0.02, 6.60, 0.85 * rs, 0.05);
+  light += 0.050 * pool(frag, 0.93, 8.30, 0.80 * rs, 0.08);
 
   /* Hero light shaft. */
   light += 0.055 * shaft(frag);
 
-  /* Lights soften as the page settles darker. */
+  /* Lights soften as the page settles darker, and on narrow screens. */
   light *= 1.0 - settle * 0.45;
+  light *= 1.0 - narrow * 0.45;
 
   color += WARM * light;
 

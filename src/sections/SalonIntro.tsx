@@ -56,7 +56,7 @@ export function SalonIntro() {
             </p>
           </Reveal>
 
-          <div className="flex flex-col gap-6">
+          <div className="hidden flex-col gap-6 md:flex">
             {points.map((point, i) => (
               <Reveal key={point.title} delay={i * 0.08}>
                 <button
@@ -84,6 +84,49 @@ export function SalonIntro() {
                 </button>
               </Reveal>
             ))}
+          </div>
+
+          <div className="md:hidden">
+            <div className="card min-h-[11rem] px-6 py-6">
+              <h3 className="font-display text-xl font-medium">
+                <span className="mr-3 text-sm font-semibold text-gold">
+                  {String(active + 1).padStart(2, "0")}
+                </span>
+                {points[active].title}
+              </h3>
+              <p className="mt-2.5 text-sm leading-relaxed text-mist">{points[active].text}</p>
+            </div>
+            <div className="mt-4 flex items-center justify-center gap-6">
+              <button
+                type="button"
+                onClick={() => setActive((active + points.length - 1) % points.length)}
+                aria-label="Point précédent"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-gold"
+              >
+                ←
+              </button>
+              <div className="flex items-center gap-2">
+                {points.map((point, i) => (
+                  <button
+                    key={point.title}
+                    type="button"
+                    onClick={() => setActive(i)}
+                    aria-label={`Aller au point ${i + 1}`}
+                    className={`h-2 w-2 rounded-full transition-colors ${
+                      active === i ? "bg-gold" : "bg-cream/20"
+                    }`}
+                  />
+                ))}
+              </div>
+              <button
+                type="button"
+                onClick={() => setActive((active + 1) % points.length)}
+                aria-label="Point suivant"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-gold"
+              >
+                →
+              </button>
+            </div>
           </div>
         </div>
       </div>

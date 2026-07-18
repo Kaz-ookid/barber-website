@@ -24,21 +24,21 @@ function BurgerButton({ open, onClick }: { open: boolean; onClick: () => void })
       type="button"
       onClick={onClick}
       aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-      className="relative flex h-10 w-10 items-center justify-center rounded-full border border-cream/20 transition-colors hover:border-cream/45 lg:hidden"
+      className="relative flex h-10 w-10 items-center justify-center lg:hidden"
     >
       <span
-        className={`absolute h-px w-4 bg-cream transition-transform duration-300 ${
-          open ? "rotate-45" : "-translate-y-[5px]"
+        className={`absolute h-[1.5px] w-5 bg-cream transition-transform duration-300 ${
+          open ? "rotate-45" : "-translate-y-[6px]"
         }`}
       />
       <span
-        className={`absolute h-px w-4 bg-cream transition-opacity duration-200 ${
+        className={`absolute h-[1.5px] w-5 bg-cream transition-opacity duration-200 ${
           open ? "opacity-0" : "opacity-100"
         }`}
       />
       <span
-        className={`absolute h-px w-4 bg-cream transition-transform duration-300 ${
-          open ? "-rotate-45" : "translate-y-[5px]"
+        className={`absolute h-[1.5px] w-5 bg-cream transition-transform duration-300 ${
+          open ? "-rotate-45" : "translate-y-[6px]"
         }`}
       />
     </button>

@@ -134,19 +134,17 @@ body {
 }
 
 .halo-spin {
-  background:
-    conic-gradient(
-      from var(--halo-angle),
-      transparent 0deg,
-      rgb(207 161 95 / 0.35) 40deg,
-      rgb(232 203 160 / 0.55) 60deg,
-      rgb(207 161 95 / 0.35) 80deg,
-      transparent 130deg,
-      transparent 190deg,
-      rgb(138 90 43 / 0.28) 235deg,
-      transparent 290deg
-    ),
-    linear-gradient(rgb(207 161 95 / 0.16), rgb(207 161 95 / 0.16));
+  background: conic-gradient(
+    from var(--halo-angle),
+    transparent 0deg,
+    rgb(207 161 95 / 0.4) 40deg,
+    rgb(232 203 160 / 0.6) 60deg,
+    rgb(207 161 95 / 0.4) 80deg,
+    transparent 130deg,
+    transparent 190deg,
+    rgb(138 90 43 / 0.3) 235deg,
+    transparent 290deg
+  );
   filter: blur(26px);
   animation: halo-rotate 16s linear infinite;
 }

@@ -9,7 +9,7 @@ const socials = [
 export function Footer() {
   return (
     <footer className="border-t border-cream/8">
-      <div className="container-x flex flex-col gap-8 py-12 md:flex-row md:items-center md:justify-between">
+      <div className="container-x flex flex-col items-center gap-8 py-12 text-center md:flex-row md:items-center md:justify-between md:text-left">
         <div>
           <p className="font-display text-lg font-semibold">
             Burtin <span className="italic text-gold">Barber</span>

@@ -89,7 +89,7 @@ export function Contact() {
               href={site.planityUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gold mt-auto pt-3.5"
+              className="btn-gold mt-8 lg:mt-auto"
             >
               Réserver un créneau
             </a>
