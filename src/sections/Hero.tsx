@@ -66,27 +66,35 @@ export function Hero() {
           </motion.div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.35, ease }}
-          className="relative mx-auto w-[86%] max-w-sm lg:w-full lg:max-w-none"
-        >
-          <div className="halo-spin absolute -inset-7 hidden rounded-[3rem] lg:block" aria-hidden />
-          <img
-            src={images.hero}
-            alt="Travail aux ciseaux au salon Burtin Barber"
-            className="relative aspect-[4/5] w-full rounded-[2rem] border border-cream/10 object-cover shadow-[0_0_24px_rgba(207,161,95,0.22)]"
-            fetchPriority="high"
+        <div className="relative mx-auto w-[86%] max-w-sm lg:w-full lg:max-w-none">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.2, delay: 0.5 }}
+            className="halo-spin absolute -inset-7 rounded-[3rem]"
+            aria-hidden
           />
-          <div className="card absolute bottom-5 left-5 right-5 flex items-center justify-between gap-4 bg-night/70 px-5 py-4 backdrop-blur-md">
-            <div>
-              <p className="text-sm font-semibold">{site.owner}</p>
-              <p className="text-xs text-mist">Fondateur & barbier</p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.35, ease }}
+            className="relative"
+          >
+            <img
+              src={images.hero}
+              alt="Travail aux ciseaux au salon Burtin Barber"
+              className="aspect-[4/5] w-full rounded-[2rem] border border-cream/10 object-cover shadow-[0_0_24px_rgba(207,161,95,0.22)]"
+              fetchPriority="high"
+            />
+            <div className="card absolute bottom-5 left-5 right-5 flex items-center justify-between gap-4 bg-night/70 px-5 py-4 backdrop-blur-md">
+              <div>
+                <p className="text-sm font-semibold">{site.owner}</p>
+                <p className="text-xs text-mist">Fondateur & barbier</p>
+              </div>
+              <StoryBubble />
             </div>
-            <StoryBubble />
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

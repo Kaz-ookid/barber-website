@@ -192,8 +192,8 @@ img {
 
 /* Animated golden shimmer on accent words */
 .shine-text {
-  padding-inline: 0.08em;
-  margin-inline: -0.08em;
+  padding-inline: 0.16em;
+  margin-inline: -0.16em;
   background: linear-gradient(
     110deg,
     var(--color-gold) 0%,
