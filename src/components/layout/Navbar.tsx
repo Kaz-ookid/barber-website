@@ -13,9 +13,21 @@ const links = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const sections = links
+      .map((link) => document.getElementById(link.href.slice(1)))
+      .filter((section): section is HTMLElement => section !== null);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24);
+      const mid = window.scrollY + window.innerHeight * 0.4;
+      let current = "";
+      for (const section of sections) {
+        if (section.offsetTop <= mid) current = `#${section.id}`;
+      }
+      setActive(current);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -36,13 +48,22 @@ export function Navbar() {
           </a>
           <ul className="hidden items-center gap-7 lg:flex">
             {links.map((link) => (
-              <li key={link.href}>
+              <li key={link.href} className="relative">
                 <a
                   href={link.href}
-                  className="text-sm font-medium text-cream/70 transition-colors hover:text-cream"
+                  className={`text-sm font-medium transition-colors duration-300 hover:text-cream ${
+                    active === link.href ? "text-gold" : "text-cream/70"
+                  }`}
                 >
                   {link.label}
                 </a>
+                {active === link.href && (
+                  <motion.span
+                    layoutId="nav-active"
+                    className="absolute -bottom-1.5 left-0 right-0 h-px bg-gold"
+                    transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                  />
+                )}
               </li>
             ))}
           </ul>
