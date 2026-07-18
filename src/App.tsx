@@ -10,7 +10,6 @@ import { Hero } from "./sections/Hero";
 import { SalonIntro } from "./sections/SalonIntro";
 import { Services } from "./sections/Services";
 import { Shop } from "./sections/Shop";
-import { Social } from "./sections/Social";
 import { Team } from "./sections/Team";
 import { marqueeWords } from "./data/site";
 
@@ -37,7 +36,6 @@ export default function App() {
         <Booking />
         <Team />
         <Gallery />
-        <Social />
         <Shop />
         <Contact />
       </main>
