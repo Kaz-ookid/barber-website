@@ -20,12 +20,16 @@ export function Shop() {
           lead="Une sélection courte et exigeante : des produits de qualité, choisis et utilisés par l'équipe, disponibles à l'achat directement au salon."
         />
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:p-0 lg:grid-cols-4">
           {products.map((product, i) => (
-            <Reveal key={product.name} delay={Math.min(i * 0.07, 0.3)}>
+            <Reveal
+              key={product.name}
+              delay={Math.min(i * 0.07, 0.3)}
+              className="w-60 shrink-0 snap-start sm:w-auto"
+            >
               <article className="card group flex h-full flex-col overflow-hidden transition-colors hover:border-gold/35">
                 <div
-                  className={`flex aspect-square items-center justify-center bg-gradient-to-br ${tints[i % tints.length]}`}
+                  className={`flex aspect-[4/3] items-center justify-center bg-gradient-to-br sm:aspect-square ${tints[i % tints.length]}`}
                 >
                   <span className="font-display text-6xl italic text-cream/85 transition-transform duration-500 group-hover:scale-110">
                     {product.name.charAt(0)}

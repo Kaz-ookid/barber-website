@@ -14,6 +14,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 html.lenis,
@@ -30,6 +32,7 @@ body {
   color: var(--color-cream);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
   overflow-x: clip;
 }
 
@@ -56,25 +59,35 @@ body {
   background: color-mix(in srgb, var(--color-cream) 3%, transparent);
 }
 
-/* Primary pill button */
+/* Primary pill button: warm glass */
 @utility btn-gold {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   border-radius: 9999px;
-  background: linear-gradient(to bottom, var(--color-gold-soft), var(--color-gold));
-  color: var(--color-night);
-  font-weight: 700;
+  border: 1px solid color-mix(in srgb, var(--color-gold) 45%, transparent);
+  background: linear-gradient(
+    to bottom,
+    rgb(207 161 95 / 0.26),
+    rgb(207 161 95 / 0.1)
+  );
+  backdrop-filter: blur(12px);
+  color: var(--color-cream);
+  font-weight: 600;
   padding: 0.9rem 1.75rem;
   font-size: 0.9rem;
-  box-shadow: 0 8px 30px rgb(207 161 95 / 0.22);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.16),
+    0 8px 28px rgb(207 161 95 / 0.14);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 .btn-gold:hover {
   transform: translateY(-1px);
-  filter: brightness(1.05);
-  box-shadow: 0 12px 36px rgb(207 161 95 / 0.3);
+  border-color: color-mix(in srgb, var(--color-gold) 75%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.2),
+    0 12px 36px rgb(207 161 95 / 0.22);
 }
 
 /* Ghost pill button */
@@ -111,6 +124,41 @@ body {
   border-radius: 9999px;
   filter: blur(90px);
   pointer-events: none;
+}
+
+/* Rotating light accent around the hero image */
+@property --halo-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.halo-spin {
+  background: conic-gradient(
+    from var(--halo-angle),
+    transparent 0deg,
+    rgb(207 161 95 / 0.4) 40deg,
+    rgb(232 203 160 / 0.6) 60deg,
+    rgb(207 161 95 / 0.4) 80deg,
+    transparent 130deg,
+    transparent 190deg,
+    rgb(138 90 43 / 0.3) 235deg,
+    transparent 290deg
+  );
+  filter: blur(26px);
+  animation: halo-rotate 16s linear infinite;
+}
+
+@keyframes halo-rotate {
+  to {
+    --halo-angle: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .halo-spin {
+    animation: none;
+  }
 }
 
 /* Shine sweep on gold buttons */

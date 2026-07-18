@@ -72,7 +72,7 @@ export function Hero() {
           transition={{ duration: 1, delay: 0.35, ease }}
           className="relative mx-auto w-full max-w-md lg:max-w-none"
         >
-          <div className="absolute -inset-6 rounded-[2.5rem] bg-gold/10 blur-2xl" />
+          <div className="halo-spin absolute -inset-7 rounded-[3rem]" aria-hidden />
           <img
             src={images.hero}
             alt="Travail aux ciseaux au salon Burtin Barber"

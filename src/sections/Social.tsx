@@ -69,14 +69,14 @@ export function Social() {
           </Reveal>
         </div>
 
-        <div className="flex justify-center gap-4 md:gap-6">
+        <div className="-mx-5 flex snap-x gap-4 overflow-x-auto px-5 pb-2 md:mx-0 md:justify-center md:gap-6 md:overflow-visible md:p-0">
           {cards.map((card, i) => (
-            <Reveal key={card.platform} delay={i * 0.1}>
+            <Reveal key={card.platform} delay={i * 0.1} className="shrink-0 snap-start">
               <a
                 href={card.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group block w-32 sm:w-40 lg:w-44 ${card.className} transition-transform duration-300 hover:-translate-y-1.5`}
+                className={`group block w-40 lg:w-44 ${card.className} transition-transform duration-300 hover:-translate-y-1.5`}
               >
                 <div className="relative overflow-hidden rounded-2xl border border-cream/12">
                   <img

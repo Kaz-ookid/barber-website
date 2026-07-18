@@ -181,6 +181,7 @@ export const marqueeWords = [
   "Barbe",
   "Transformation",
   "Coiffage",
+  "Conseils & entretien",
   "Soins",
 ];
 

@@ -25,9 +25,13 @@ export function Gallery() {
           </Reveal>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
+        <div className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:p-0">
           {gallery.map((item, i) => (
-            <Reveal key={item.label} delay={Math.min(i * 0.06, 0.3)}>
+            <Reveal
+              key={item.label}
+              delay={Math.min(i * 0.06, 0.3)}
+              className="w-[70vw] shrink-0 snap-start sm:w-[45vw] md:w-auto"
+            >
               <figure className="card group overflow-hidden">
                 <div className="aspect-[4/5] overflow-hidden">
                   <img
@@ -37,9 +41,9 @@ export function Gallery() {
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                   />
                 </div>
-                <figcaption className="flex items-center justify-between px-4 py-3">
-                  <span className="text-sm font-semibold">{item.label}</span>
-                  <span className="rounded-full border border-cream/15 px-2.5 py-0.5 text-[11px] font-semibold text-mist">
+                <figcaption className="flex h-12 items-center justify-between gap-3 px-4">
+                  <span className="truncate text-sm font-semibold">{item.label}</span>
+                  <span className="shrink-0 rounded-full border border-cream/15 px-2.5 py-0.5 text-[11px] font-semibold text-mist">
                     {item.tag}
                   </span>
                 </figcaption>
