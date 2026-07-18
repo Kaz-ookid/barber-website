@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
@@ -24,13 +24,37 @@ export function Coverflow<T>({
   shiftVw = 60,
 }: CoverflowProps<T>) {
   const [idx, setIdx] = useState(0);
+  const startX = useRef<number | null>(null);
   const n = items.length;
   const prev = () => setIdx((i) => (i + n - 1) % n);
   const next = () => setIdx((i) => (i + 1) % n);
 
   return (
     <div>
-      <div className={`relative overflow-hidden ${stageClassName}`}>
+      <div
+        className={`relative overflow-hidden ${stageClassName}`}
+        style={{ touchAction: "pan-y" }}
+        onPointerDown={(e) => {
+          startX.current = e.clientX;
+        }}
+        onPointerMove={(e) => {
+          if (startX.current === null) return;
+          const dx = e.clientX - startX.current;
+          if (dx < -45) {
+            startX.current = null;
+            next();
+          } else if (dx > 45) {
+            startX.current = null;
+            prev();
+          }
+        }}
+        onPointerUp={() => {
+          startX.current = null;
+        }}
+        onPointerCancel={() => {
+          startX.current = null;
+        }}
+      >
         {items.map((item, i) => {
           const offset = (i - idx + n) % n;
           let pos: number | null = null;
@@ -50,13 +74,6 @@ export function Coverflow<T>({
               }}
               style={{ zIndex: pos === 0 ? 2 : 1 }}
               transition={{ type: "spring", stiffness: 260, damping: 30 }}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.2}
-              onDragEnd={(_, info) => {
-                if (info.offset.x < -50) next();
-                else if (info.offset.x > 50) prev();
-              }}
             >
               {render(item)}
             </motion.div>

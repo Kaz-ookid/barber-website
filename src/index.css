@@ -41,6 +41,15 @@ body {
   color: var(--color-night);
 }
 
+/* Images are decorative: no long-press save sheet, no selection, no drag */
+img {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
+
 /* Content container: keeps everything readable on ultrawide screens */
 @utility container-x {
   margin-inline: auto;
