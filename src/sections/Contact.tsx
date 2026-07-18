@@ -85,7 +85,12 @@ export function Contact() {
                 TikTok
               </a>
             </div>
-            <a href="#reserver" className="btn-gold mt-auto pt-3.5">
+            <a
+              href={site.planityUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gold mt-auto pt-3.5"
+            >
               Réserver un créneau
             </a>
           </Reveal>

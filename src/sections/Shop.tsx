@@ -17,7 +17,7 @@ export function Shop() {
           kicker="Boutique"
           title="Les produits"
           accent="du salon."
-          lead="Une sélection courte : uniquement ce que Rudy utilise vraiment sur ses clients. En vente au salon, sans livraison."
+          lead="Une sélection courte et exigeante : des produits de qualité, choisis et utilisés par l'équipe, disponibles à l'achat directement au salon."
         />
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -37,10 +37,7 @@ export function Shop() {
                   </p>
                   <h3 className="font-display mt-1.5 text-lg font-medium">{product.name}</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-mist">{product.desc}</p>
-                  <div className="mt-4 flex items-center justify-between">
-                    <span className="font-display text-lg font-medium text-gold">
-                      {product.price}
-                    </span>
+                  <div className="mt-4">
                     <span className="rounded-full border border-cream/15 px-2.5 py-1 text-[11px] font-semibold text-mist">
                       En vente au salon
                     </span>

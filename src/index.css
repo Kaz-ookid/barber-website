@@ -113,6 +113,48 @@ body {
   pointer-events: none;
 }
 
+/* Shine sweep on gold buttons */
+.btn-gold {
+  position: relative;
+  overflow: hidden;
+}
+.btn-gold::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -70%;
+  height: 100%;
+  width: 45%;
+  background: linear-gradient(100deg, transparent, rgb(255 255 255 / 0.45), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
+}
+.btn-gold:hover::after {
+  left: 125%;
+}
+
+/* Animated golden shimmer on accent words */
+.shine-text {
+  background: linear-gradient(
+    110deg,
+    var(--color-gold) 0%,
+    var(--color-gold) 42%,
+    #f6e3bd 50%,
+    var(--color-gold) 58%,
+    var(--color-gold) 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 7s linear infinite;
+}
+
+@keyframes shine {
+  from { background-position: 160% 0; }
+  to { background-position: -160% 0; }
+}
+
 /* Marquee */
 @keyframes marquee {
   from { transform: translateX(0); }
@@ -125,6 +167,9 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee {
+    animation: none;
+  }
+  .shine-text {
     animation: none;
   }
   html {

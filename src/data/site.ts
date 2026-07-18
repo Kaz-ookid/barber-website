@@ -127,20 +127,20 @@ export const team: TeamMember[] = [
   {
     name: "Rudy Burtin",
     role: "Fondateur · Barbier",
-    bio: "L'œil d'un visagiste, formé fauteuil après fauteuil. Précision tondeuse, maîtrise ciseaux, et une vidéo par jour pour le prouver.",
+    bio: "L'œil d'un visagiste, formé fauteuil après fauteuil. Précision à la tondeuse, maîtrise des ciseaux, exigence sur chaque détail.",
     image: unsplash("1567894340315-735d7c361db0", 800),
     featured: true,
   },
   {
-    name: "Barbier invité",
-    role: "Bientôt au salon",
-    bio: "Le salon accueille régulièrement des barbiers invités. Annonce à venir.",
+    name: "Barbier résident",
+    role: "Annonce à venir",
+    bio: "Un fauteuil du salon sera bientôt occupé à demeure par un nouveau barbier. Annonce à venir.",
     placeholder: true,
   },
   {
-    name: "Ta place ?",
+    name: "Ton fauteuil ?",
     role: "Chaise à louer",
-    bio: "Tu es barbier et tu cherches un fauteuil dans un salon qui tourne ? Le salon loue des chaises à la semaine ou au mois.",
+    bio: "Tu es barbier et tu cherches une place stable dans un salon qui tourne ? Le salon loue des fauteuils à demeure.",
     placeholder: true,
   },
 ];
@@ -148,7 +148,6 @@ export const team: TeamMember[] = [
 export interface Product {
   name: string;
   kind: string;
-  price: string;
   desc: string;
 }
 
@@ -156,25 +155,21 @@ export const products: Product[] = [
   {
     name: "Pâte coiffante mate",
     kind: "Coiffage",
-    price: "28.-",
-    desc: "Fixation forte, fini mat. Celle que Rudy utilise au salon.",
+    desc: "Fixation forte, fini mat, retouches faciles dans la journée.",
   },
   {
     name: "Poudre texturisante",
     kind: "Volume",
-    price: "24.-",
     desc: "Volume instantané à la racine, toucher naturel.",
   },
   {
     name: "Huile à barbe",
     kind: "Barbe",
-    price: "22.-",
     desc: "Nourrit et discipline sans effet gras.",
   },
   {
     name: "Shampoing quotidien",
     kind: "Soin",
-    price: "19.-",
     desc: "Doux, sans sulfates, pour un usage quotidien.",
   },
 ];

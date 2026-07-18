@@ -1,6 +1,6 @@
 import { Reveal } from "../components/ui/Reveal";
 import { SectionHeading } from "../components/ui/SectionHeading";
-import { services } from "../data/site";
+import { services, site } from "../data/site";
 
 export function Services() {
   return (
@@ -17,7 +17,9 @@ export function Services() {
           {services.map((service, i) => (
             <Reveal key={service.name} delay={Math.min(i * 0.05, 0.3)} y={20}>
               <a
-                href="#reserver"
+                href={site.planityUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`card group flex h-full items-start justify-between gap-6 px-6 py-5 transition-colors hover:border-gold/40 ${
                   service.featured ? "border-gold/40 bg-gold/5" : ""
                 }`}

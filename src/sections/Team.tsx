@@ -12,9 +12,9 @@ export function Team() {
       <div className="container-x">
         <SectionHeading
           kicker="L'équipe"
-          title="Rudy d'abord,"
-          accent="et les siens."
-          lead="Le salon est construit autour du fauteuil de Rudy. Des chaises sont louées à des barbiers choisis, pour que le lieu vive sans rien perdre en exigence."
+          title="Le barbershop,"
+          accent="et ses barbiers."
+          lead="Fondé et tenu par Rudy Burtin. Les autres fauteuils sont occupés par des barbiers résidents, installés au salon sur la durée, chacun avec sa clientèle et son style."
         />
 
         <div className="grid gap-6 lg:grid-cols-2">

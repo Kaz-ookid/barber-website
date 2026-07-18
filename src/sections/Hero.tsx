@@ -18,21 +18,26 @@ export function Hero() {
       <div className="container-x grid min-h-svh items-center gap-12 pb-16 pt-32 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:pt-36">
         <div>
           <motion.p {...fadeUp(0.05)} className="eyebrow">
-            Salon de barbier · {site.city}
+            Barbershop · Av. de Tivoli 6, {site.city}
           </motion.p>
           <motion.h1
             {...fadeUp(0.15)}
             className="font-display mt-5 text-5xl font-medium leading-[1.05] tracking-tight sm:text-6xl xl:text-7xl"
           >
-            Burtin <span className="italic text-gold">Barber</span>
-            <span className="block text-cream/90">le salon de Rudy.</span>
+            Burtin <span className="shine-text italic">Barber</span>
+            <span className="block text-cream/90">l'art de la coupe.</span>
           </motion.h1>
           <motion.p {...fadeUp(0.3)} className="mt-6 max-w-lg text-lg leading-relaxed text-mist">
             Une coupe pensée pour ton visage, pas pour la tendance. Coupes
             sur-mesure, dégradés précis, barbe sculptée, au cœur de Lausanne.
           </motion.p>
           <motion.div {...fadeUp(0.45)} className="mt-9 flex flex-wrap items-center gap-4">
-            <a href="#reserver" className="btn-gold">
+            <a
+              href={site.planityUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gold"
+            >
               Réserver un créneau
             </a>
             <a href="#travail" className="btn-ghost">
@@ -65,7 +70,7 @@ export function Hero() {
           <div className="card absolute bottom-5 left-5 right-5 flex items-center justify-between bg-night/70 px-5 py-4 backdrop-blur-md">
             <div>
               <p className="text-sm font-semibold">{site.owner}</p>
-              <p className="text-xs text-mist">Fondateur · une vidéo par jour</p>
+              <p className="text-xs text-mist">Fondateur & barbier</p>
             </div>
             <a
               href={site.instagram}

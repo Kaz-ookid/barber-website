@@ -15,7 +15,7 @@ export function SectionHeading({ kicker, title, accent, lead, center }: SectionH
         <p className="eyebrow">{kicker}</p>
         <h2 className="font-display mt-3 text-4xl font-medium leading-tight tracking-tight md:text-5xl">
           {title}
-          {accent && <span className="italic text-gold"> {accent}</span>}
+          {accent && <span className="shine-text italic"> {accent}</span>}
         </h2>
         {lead && <p className="mt-4 text-base leading-relaxed text-mist md:text-lg">{lead}</p>}
       </div>

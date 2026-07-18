@@ -11,7 +11,7 @@ export function Gallery() {
             kicker="Le travail"
             title="Chaque coupe"
             accent="signée."
-            lead="Un aperçu du quotidien du salon. Le reste se passe en vidéo, tous les jours."
+            lead="Un aperçu du quotidien du salon. Le reste se passe en vidéo, sur les réseaux."
           />
           <Reveal delay={0.1}>
             <a

@@ -1,5 +1,6 @@
 import { Footer } from "./components/layout/Footer";
 import { Navbar } from "./components/layout/Navbar";
+import { Aurora } from "./components/ui/Aurora";
 import { Marquee } from "./components/ui/Marquee";
 import { useLenis } from "./hooks/useLenis";
 import { Booking } from "./sections/Booking";
@@ -7,9 +8,9 @@ import { Contact } from "./sections/Contact";
 import { Gallery } from "./sections/Gallery";
 import { Hero } from "./sections/Hero";
 import { SalonIntro } from "./sections/SalonIntro";
-import { Series } from "./sections/Series";
 import { Services } from "./sections/Services";
 import { Shop } from "./sections/Shop";
+import { Social } from "./sections/Social";
 import { Team } from "./sections/Team";
 import { marqueeWords } from "./data/site";
 
@@ -18,6 +19,7 @@ export default function App() {
 
   return (
     <>
+      <Aurora />
       <Navbar />
       <main>
         <Hero />
@@ -32,11 +34,11 @@ export default function App() {
         </div>
         <SalonIntro />
         <Services />
+        <Booking />
         <Team />
         <Gallery />
-        <Series />
+        <Social />
         <Shop />
-        <Booking />
         <Contact />
       </main>
       <Footer />

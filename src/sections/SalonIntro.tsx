@@ -13,7 +13,7 @@ const points = [
   },
   {
     title: "Un salon qui vit",
-    text: "Des barbiers invités, des produits sélectionnés, et le fauteuil de Rudy au centre. Un lieu, pas juste un rendez-vous.",
+    text: "Une équipe de barbiers résidents, des produits sélectionnés avec soin. Un lieu où l'on revient, pas juste un rendez-vous.",
   },
 ];
 
