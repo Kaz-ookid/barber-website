@@ -6,6 +6,7 @@ export const site = {
   phone: "+41 79 339 06 39",
   phoneHref: "tel:+41793390639",
   mapsUrl: "https://maps.google.com/?q=Av.+de+Tivoli+6,+1007+Lausanne",
+  planityUrl: "https://www.planity.com/burtin-rudy-1007-lausanne",
   rating: "4.9",
   reviews: "144",
   instagram: "https://www.instagram.com/burtinbarber/",
@@ -187,11 +188,3 @@ export const marqueeWords = [
   "Soins",
 ];
 
-/* Booking: slots every 40 minutes, 07:40 to 18:20 (Monday from 12:20), Sunday closed */
-export const booking = {
-  slotStart: 7 * 60 + 40,
-  slotStartMonday: 12 * 60 + 20,
-  slotEnd: 18 * 60 + 20,
-  slotStep: 40,
-  daysAhead: 14,
-};
