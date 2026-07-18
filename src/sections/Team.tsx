@@ -8,7 +8,6 @@ export function Team() {
 
   return (
     <section id="equipe" className="relative py-24 md:py-32">
-      <div className="glow right-[5%] top-[20%] h-[26rem] w-[26rem] bg-gold/10" />
       <div className="container-x">
         <SectionHeading
           kicker="L'équipe"

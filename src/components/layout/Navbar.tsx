@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { site } from "../../data/site";
 
 const links = [
   { label: "Le salon", href: "#salon" },
@@ -48,12 +47,7 @@ export function Navbar() {
             ))}
           </ul>
           <div className="flex items-center gap-3">
-            <a
-              href={site.planityUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gold hidden !px-6 !py-2.5 lg:inline-flex"
-            >
+            <a href="#reserver" className="btn-gold hidden !px-6 !py-2.5 lg:inline-flex">
               Réserver
             </a>
             <button
@@ -107,9 +101,7 @@ export function Navbar() {
               ))}
             </ul>
             <a
-              href={site.planityUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#reserver"
               onClick={() => setOpen(false)}
               className="btn-gold mt-auto w-full"
             >

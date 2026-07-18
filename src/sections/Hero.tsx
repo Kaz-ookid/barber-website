@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { StoryBubble } from "../components/ui/StoryBubble";
 import { images, site } from "../data/site";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -12,9 +13,6 @@ const fadeUp = (delay: number) => ({
 export function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <div className="glow left-[-10%] top-[-10%] h-[34rem] w-[34rem] bg-gold/15" />
-      <div className="glow right-[-8%] top-[30%] h-[28rem] w-[28rem] bg-[#8a5a2b]/20" />
-
       <div className="container-x grid min-h-svh items-center gap-12 pb-16 pt-32 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:pt-36">
         <div>
           <motion.p {...fadeUp(0.05)} className="eyebrow">
@@ -45,12 +43,26 @@ export function Hero() {
             </a>
           </motion.div>
           <motion.div {...fadeUp(0.6)} className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-mist">
-            <span className="flex items-center gap-2">
+            <a
+              href={site.planityUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 transition-colors hover:text-cream"
+              title="Voir les avis sur Planity"
+            >
               <span className="text-gold">★★★★★</span>
               {site.rating}/5 · {site.reviews} avis
-            </span>
+            </a>
             <span>Ouvert dès 7h40</span>
-            <span>Av. de Tivoli 6</span>
+            <a
+              href={site.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-cream"
+              title="Ouvrir dans Maps"
+            >
+              Av. de Tivoli 6
+            </a>
           </motion.div>
         </div>
 
@@ -67,19 +79,12 @@ export function Hero() {
             className="relative aspect-[4/5] w-full rounded-[2rem] border border-cream/10 object-cover"
             fetchPriority="high"
           />
-          <div className="card absolute bottom-5 left-5 right-5 flex items-center justify-between bg-night/70 px-5 py-4 backdrop-blur-md">
+          <div className="card absolute bottom-5 left-5 right-5 flex items-center justify-between gap-4 bg-night/70 px-5 py-4 backdrop-blur-md">
             <div>
               <p className="text-sm font-semibold">{site.owner}</p>
               <p className="text-xs text-mist">Fondateur & barbier</p>
             </div>
-            <a
-              href={site.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-semibold text-gold transition-opacity hover:opacity-75"
-            >
-              {site.handle}
-            </a>
+            <StoryBubble />
           </div>
         </motion.div>
       </div>

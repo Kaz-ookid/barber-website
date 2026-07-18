@@ -6,8 +6,7 @@ export function Booking() {
     <section id="reserver" className="relative py-20 md:py-28">
       <div className="container-x">
         <Reveal>
-          <div className="card relative mx-auto max-w-4xl overflow-hidden px-6 py-14 text-center md:px-16 md:py-20">
-            <div className="glow left-1/2 top-0 h-[20rem] w-[30rem] -translate-x-1/2 bg-gold/12" />
+          <div className="card relative mx-auto max-w-4xl overflow-hidden bg-gradient-to-b from-gold/8 via-transparent to-transparent px-6 py-14 text-center md:px-16 md:py-20">
             <p className="eyebrow relative">Réservation</p>
             <h2 className="font-display relative mt-4 text-4xl font-medium leading-tight tracking-tight md:text-5xl">
               Réserve ton <span className="shine-text italic">créneau.</span>

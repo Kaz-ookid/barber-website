@@ -1,4 +1,5 @@
 import { Reveal } from "../components/ui/Reveal";
+import { StoryBubble } from "../components/ui/StoryBubble";
 import { site } from "../data/site";
 
 const crop = (id: string) =>
@@ -27,8 +28,7 @@ const cards = [
 
 export function Social() {
   return (
-    <section className="relative overflow-hidden py-24 md:py-32">
-      <div className="glow left-[10%] bottom-[0%] h-[26rem] w-[26rem] bg-gold/10" />
+    <section className="relative py-24 md:py-32">
       <div className="container-x grid items-center gap-14 lg:grid-cols-2">
         <div>
           <Reveal>
@@ -63,7 +63,9 @@ export function Social() {
                 </a>
               ))}
             </div>
-            <p className="mt-4 text-sm font-semibold text-gold">{site.handle}</p>
+            <div className="mt-6">
+              <StoryBubble label="La story du jour" />
+            </div>
           </Reveal>
         </div>
 

@@ -10,6 +10,7 @@ export const site = {
   rating: "4.9",
   reviews: "144",
   instagram: "https://www.instagram.com/burtinbarber/",
+  instagramStories: "https://www.instagram.com/stories/burtinbarber/",
   tiktok: "https://www.tiktok.com/@burtinbarber",
   youtube: "https://www.youtube.com/@Burtinbarber",
   handle: "@burtinbarber",
@@ -32,7 +33,7 @@ export const services: Service[] = [
     name: "Coupe transformation",
     duration: "1 h",
     price: "65.-",
-    note: "Nouveau style, étude du visage comprise",
+    note: "Nouveau style ou plus de 5 cm de coupe, étude du visage comprise",
   },
   { name: "Transformation + barbe", duration: "1 h 15", price: "75.-" },
   {
@@ -66,6 +67,7 @@ export const images = {
   chair: unsplash("1512690459411-b9245aed614b", 800),
   tools: unsplash("1621605815971-fbc98d665033", 800),
   pomade: unsplash("1587909209111-5097ee578ec3", 800),
+  storyThumb: unsplash("1567894340315-735d7c361db0", 160),
 };
 
 export interface GalleryItem {
