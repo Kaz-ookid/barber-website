@@ -64,7 +64,7 @@ export function Social() {
               ))}
             </div>
             <div className="mt-6">
-              <StoryBubble label="La story du jour" />
+              <StoryBubble />
             </div>
           </Reveal>
         </div>

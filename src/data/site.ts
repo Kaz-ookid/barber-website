@@ -10,7 +10,6 @@ export const site = {
   rating: "4.9",
   reviews: "144",
   instagram: "https://www.instagram.com/burtinbarber/",
-  instagramStories: "https://www.instagram.com/stories/burtinbarber/",
   tiktok: "https://www.tiktok.com/@burtinbarber",
   youtube: "https://www.youtube.com/@Burtinbarber",
   handle: "@burtinbarber",

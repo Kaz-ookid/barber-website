@@ -1,6 +1,6 @@
 import { Footer } from "./components/layout/Footer";
 import { Navbar } from "./components/layout/Navbar";
-import { Aurora } from "./components/ui/Aurora";
+import { Backdrop } from "./components/ui/Backdrop";
 import { Marquee } from "./components/ui/Marquee";
 import { useLenis } from "./hooks/useLenis";
 import { Booking } from "./sections/Booking";
@@ -18,8 +18,8 @@ export default function App() {
   useLenis();
 
   return (
-    <>
-      <Aurora />
+    <div className="relative">
+      <Backdrop />
       <Navbar />
       <main>
         <Hero />
@@ -42,6 +42,6 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
