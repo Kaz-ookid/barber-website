@@ -4,32 +4,26 @@ import { SectionHeading } from "../components/ui/SectionHeading";
 import type { Product } from "../data/site";
 import { products } from "../data/site";
 
-const tints = [
-  "from-gold/25 to-gold/5",
-  "from-[#8a5a2b]/30 to-[#8a5a2b]/5",
-  "from-cream/15 to-cream/3",
-  "from-gold/18 to-[#8a5a2b]/8",
-];
-
-function ProductCard({ product, index }: { product: Product; index: number }) {
+function ProductCard({ product }: { product: Product }) {
   return (
-    <article className="card group flex h-full flex-col overflow-hidden transition-colors hover:border-gold/35">
-      <div
-        className={`flex aspect-[4/3] items-center justify-center bg-gradient-to-br sm:aspect-square ${tints[index % tints.length]}`}
-      >
-        <span className="font-display text-5xl italic text-cream/85 transition-transform duration-500 group-hover:scale-110 sm:text-6xl">
+    <article className="group flex h-full flex-col border border-ink/12 bg-card transition-colors hover:border-gold/60">
+      <div className="flex aspect-[4/3] items-center justify-center border-b border-ink/8 sm:aspect-square">
+        <span className="font-display text-5xl font-medium text-gold/70 transition-transform duration-500 group-hover:scale-110 sm:text-6xl">
           {product.name.charAt(0)}
         </span>
       </div>
-      <div className="flex flex-1 flex-col px-5 py-4 sm:py-5">
-        <p className="text-[11px] font-bold uppercase tracking-wide text-gold">{product.kind}</p>
-        <h3 className="font-display mt-1 text-base font-medium sm:text-lg">{product.name}</h3>
-        <p className="mt-1.5 flex-1 text-sm leading-relaxed text-mist">{product.desc}</p>
-        <div className="mt-3">
-          <span className="rounded-full border border-cream/15 px-2.5 py-1 text-[11px] font-semibold text-mist">
-            En vente au salon
-          </span>
-        </div>
+      <div className="flex flex-1 flex-col px-6 py-5 text-center">
+        <p className="text-[9px] font-medium uppercase tracking-[0.3em] text-gold">
+          {product.kind}
+        </p>
+        <h3 className="font-display mt-2 text-lg font-medium uppercase tracking-[0.04em]">
+          {product.name}
+        </h3>
+        <span className="mx-auto mt-3 h-px w-8 bg-ink/20" />
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-stone">{product.desc}</p>
+        <p className="mt-4 text-[10px] font-medium uppercase tracking-[0.25em] text-stone">
+          En vente au salon
+        </p>
       </div>
     </article>
   );
@@ -37,8 +31,8 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 
 export function Shop() {
   return (
-    <RevealSection id="boutique" className="py-24 md:py-32">
-      <div className="container-x">
+    <RevealSection id="boutique" className="bg-paper pb-24 text-ink md:pb-32">
+      <div className="container-x border-t border-ink/15 pt-20 md:pt-24">
         <SectionHeading
           kicker="Boutique"
           title="Les produits"
@@ -47,10 +41,10 @@ export function Shop() {
         />
 
         {/* Desktop grid */}
-        <div className="hidden gap-5 sm:grid sm:grid-cols-2 lg:grid-cols-4">
+        <div className="hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-4">
           {products.map((product, i) => (
             <Reveal key={product.name} delay={Math.min(i * 0.07, 0.3)}>
-              <ProductCard product={product} index={i} />
+              <ProductCard product={product} />
             </Reveal>
           ))}
         </div>
@@ -60,12 +54,10 @@ export function Shop() {
           <Coverflow
             items={products}
             keyOf={(product) => product.name}
-            render={(product) => (
-              <ProductCard product={product} index={products.indexOf(product)} />
-            )}
-            stageClassName="h-[calc(42vw+13rem)]"
-            cardClassName="w-[56vw]"
-            shiftVw={54}
+            render={(product) => <ProductCard product={product} />}
+            stageClassName="h-[calc(42vw+15rem)]"
+            cardClassName="w-[58vw]"
+            shiftVw={56}
           />
         </div>
       </div>

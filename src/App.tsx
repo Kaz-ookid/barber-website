@@ -1,7 +1,6 @@
 import { Footer } from "./components/layout/Footer";
 import { Navbar } from "./components/layout/Navbar";
-import { Backdrop } from "./components/ui/Backdrop";
-import { Marquee } from "./components/ui/Marquee";
+import { Band } from "./components/ui/Band";
 import { useLenis } from "./hooks/useLenis";
 import { Booking } from "./sections/Booking";
 import { Contact } from "./sections/Contact";
@@ -11,26 +10,16 @@ import { SalonIntro } from "./sections/SalonIntro";
 import { Services } from "./sections/Services";
 import { Shop } from "./sections/Shop";
 import { Team } from "./sections/Team";
-import { marqueeWords } from "./data/site";
 
 export default function App() {
   useLenis();
 
   return (
     <div className="relative">
-      <Backdrop />
       <Navbar />
       <main>
         <Hero />
-        <div className="border-y border-cream/8 py-4">
-          <Marquee duration={45}>
-            {marqueeWords.map((word) => (
-              <span key={word} className="mx-8 flex items-center gap-16 text-sm font-semibold uppercase tracking-[0.2em] text-mist">
-                {word} <span className="text-gold">·</span>
-              </span>
-            ))}
-          </Marquee>
-        </div>
+        <Band words="Précision. Métier. Caractère." />
         <SalonIntro />
         <Services />
         <Booking />

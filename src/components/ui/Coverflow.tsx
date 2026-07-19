@@ -85,19 +85,19 @@ export function Coverflow<T>({
           type="button"
           onClick={prev}
           aria-label="Précédent"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-gold"
+          className="flex h-10 w-10 items-center justify-center border border-current/25 transition-colors hover:border-gold hover:text-gold"
         >
           ←
         </button>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
           {items.map((item, i) => (
             <button
               key={keyOf(item)}
               type="button"
               onClick={() => setIdx(i)}
               aria-label={`Élément ${i + 1}`}
-              className={`h-2 w-2 rounded-full transition-colors ${
-                idx === i ? "bg-gold" : "bg-cream/20"
+              className={`h-px w-5 transition-colors ${
+                idx === i ? "bg-gold" : "bg-current opacity-25"
               }`}
             />
           ))}
@@ -106,7 +106,7 @@ export function Coverflow<T>({
           type="button"
           onClick={next}
           aria-label="Suivant"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-gold"
+          className="flex h-10 w-10 items-center justify-center border border-current/25 transition-colors hover:border-gold hover:text-gold"
         >
           →
         </button>

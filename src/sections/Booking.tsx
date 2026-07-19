@@ -3,31 +3,32 @@ import { site } from "../data/site";
 
 export function Booking() {
   return (
-    <RevealSection id="reserver" className="relative py-20 md:py-28">
-      <div className="container-x">
+    <RevealSection id="reserver" className="border-y border-gold/40 bg-ink py-20 md:py-24">
+      <div className="container-x text-center">
         <Reveal>
-          <div className="card relative mx-auto max-w-4xl overflow-hidden bg-gradient-to-b from-gold/8 via-transparent to-transparent px-6 py-14 text-center md:px-16 md:py-20">
-            <p className="eyebrow relative">Réservation</p>
-            <h2 className="font-display relative mt-4 text-4xl font-medium leading-tight tracking-tight md:text-5xl">
-              Réserve ton <span className="shine-text italic">créneau.</span>
-            </h2>
-            <p className="relative mx-auto mt-4 max-w-lg text-base leading-relaxed text-mist md:text-lg">
-              Disponibilités en temps réel, confirmation immédiate par SMS.
-              Créneaux dès 7h40, toutes les 40 minutes.
-            </p>
-            <div className="relative mt-9">
-              <a
-                href={site.planityUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-gold !px-10 !py-4 text-base"
-              >
-                Réserver sur Planity →
-              </a>
-            </div>
-            <p className="relative mt-5 text-sm text-mist">
+          <p className="kicker">Réservation</p>
+          <span className="rule-gold mx-auto mt-3" />
+          <h2 className="font-display mx-auto mt-7 max-w-2xl text-4xl font-medium uppercase leading-tight tracking-[0.05em] md:text-5xl">
+            Réserve ton créneau.
+          </h2>
+          <p className="mx-auto mt-5 max-w-lg text-[15px] leading-relaxed text-mist">
+            Disponibilités en temps réel, confirmation immédiate par SMS.
+            Créneaux dès 7h40, toutes les 40 minutes.
+          </p>
+        </Reveal>
+        <Reveal delay={0.12}>
+          <div className="mt-10 flex flex-col items-center gap-5">
+            <a
+              href={site.planityUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-line !px-12"
+            >
+              Réserver sur Planity
+            </a>
+            <p className="text-xs tracking-wide text-mist">
               ou par téléphone :{" "}
-              <a href={site.phoneHref} className="font-semibold text-gold hover:underline">
+              <a href={site.phoneHref} className="text-gold transition-opacity hover:opacity-75">
                 {site.phone}
               </a>
             </p>

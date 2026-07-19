@@ -1,10 +1,5 @@
 import { images, site } from "../../data/site";
 
-/**
- * Instagram-style bubble: gold gradient ring around a thumbnail, linking
- * to the account. Instagram does not expose stories to third-party sites,
- * so the ring is always shown and simply opens the profile.
- */
 export function StoryBubble() {
   return (
     <a
@@ -14,15 +9,10 @@ export function StoryBubble() {
       className="group flex items-center gap-3"
       title={`Instagram ${site.handle}`}
     >
-      <span className="flex h-12 w-12 shrink-0 rounded-full bg-[conic-gradient(from_210deg,#e8cba0,#cfa15f,#8a5a2b,#e8cba0)] p-[2.5px] transition-transform duration-300 group-hover:scale-110">
-        <img
-          src={images.storyThumb}
-          alt=""
-          loading="lazy"
-          className="h-full w-full rounded-full border-2 border-night object-cover"
-        />
+      <span className="block h-11 w-11 shrink-0 border border-gold/60 p-[3px] transition-colors group-hover:border-gold">
+        <img src={images.storyThumb} alt="" loading="lazy" className="h-full w-full object-cover" />
       </span>
-      <span className="text-sm font-semibold text-cream transition-colors group-hover:text-gold">
+      <span className="text-[11px] font-medium uppercase tracking-[0.25em] transition-colors group-hover:text-gold">
         {site.handle}
       </span>
     </a>

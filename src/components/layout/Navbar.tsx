@@ -12,8 +12,13 @@ const links = [
 
 function Logo() {
   return (
-    <a href="#" className="font-display text-lg font-semibold tracking-tight">
-      Burtin <span className="italic text-gold">Barber</span>
+    <a href="#" className="block leading-none">
+      <span className="font-display block text-lg font-semibold uppercase tracking-[0.18em]">
+        Burtin Barber
+      </span>
+      <span className="mt-1 block text-[8px] font-medium uppercase tracking-[0.45em] text-gold">
+        Barbershop · Lausanne
+      </span>
     </a>
   );
 }
@@ -27,18 +32,13 @@ function BurgerButton({ open, onClick }: { open: boolean; onClick: () => void })
       className="relative flex h-10 w-10 items-center justify-center lg:hidden"
     >
       <span
-        className={`absolute h-[1.5px] w-5 bg-cream transition-transform duration-300 ${
-          open ? "rotate-45" : "-translate-y-[6px]"
+        className={`absolute h-px w-6 bg-cream transition-transform duration-300 ${
+          open ? "rotate-45" : "-translate-y-[4px]"
         }`}
       />
       <span
-        className={`absolute h-[1.5px] w-5 bg-cream transition-opacity duration-200 ${
-          open ? "opacity-0" : "opacity-100"
-        }`}
-      />
-      <span
-        className={`absolute h-[1.5px] w-5 bg-cream transition-transform duration-300 ${
-          open ? "-rotate-45" : "translate-y-[6px]"
+        className={`absolute h-px w-6 bg-cream transition-transform duration-300 ${
+          open ? "-rotate-45" : "translate-y-[4px]"
         }`}
       />
     </button>
@@ -77,22 +77,20 @@ export function Navbar() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
-        <nav
-          className={`container-x flex items-center justify-between rounded-full border px-5 py-3 transition-colors duration-300 md:px-8 ${
-            scrolled
-              ? "border-cream/10 bg-night/80 backdrop-blur-md"
-              : "border-transparent bg-transparent"
-          }`}
-        >
+      <header
+        className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
+          scrolled ? "border-cream/10 bg-ink/95" : "border-transparent bg-transparent"
+        }`}
+      >
+        <nav className="container-x flex items-center justify-between py-4">
           <Logo />
-          <ul className="hidden items-center gap-7 lg:flex">
+          <ul className="hidden items-center gap-8 lg:flex">
             {links.map((link) => (
               <li key={link.href} className="relative">
                 <a
                   href={link.href}
-                  className={`text-sm font-medium transition-colors duration-300 hover:text-cream ${
-                    active === link.href ? "text-gold" : "text-cream/70"
+                  className={`text-[11px] font-medium uppercase tracking-[0.22em] transition-colors duration-300 hover:text-cream ${
+                    active === link.href ? "text-gold" : "text-cream/65"
                   }`}
                 >
                   {link.label}
@@ -108,7 +106,7 @@ export function Navbar() {
             ))}
           </ul>
           <div className="flex items-center gap-3">
-            <a href="#reserver" className="btn-gold hidden !px-6 !py-2.5 lg:inline-flex">
+            <a href="#reserver" className="btn-line hidden !px-6 !py-2.5 lg:inline-flex">
               Réserver
             </a>
             <BurgerButton open={open} onClick={() => setOpen(!open)} />
@@ -119,30 +117,29 @@ export function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-[60] flex h-[100dvh] flex-col overflow-y-auto overscroll-contain bg-night/95 backdrop-blur-xl"
+            className="fixed inset-0 z-[60] flex h-[100dvh] flex-col overflow-y-auto overscroll-contain bg-ink"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
           >
-            <div className="px-4 pt-4">
-              <div className="container-x flex items-center justify-between px-5 py-3 md:px-8">
-                <Logo />
-                <BurgerButton open onClick={() => setOpen(false)} />
-              </div>
+            <div className="container-x flex items-center justify-between py-4">
+              <Logo />
+              <BurgerButton open onClick={() => setOpen(false)} />
             </div>
-            <ul className="mt-10 flex flex-col gap-1 px-8">
+            <ul className="container-x mt-10 flex flex-col">
               {links.map((link, i) => (
                 <motion.li
                   key={link.href}
-                  initial={{ opacity: 0, y: 16 }}
+                  initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + i * 0.05 }}
+                  transition={{ delay: 0.08 + i * 0.05 }}
+                  className="border-b border-cream/8"
                 >
                   <a
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className={`font-display block py-3 text-3xl font-medium tracking-tight ${
+                    className={`font-display block py-4 text-3xl font-medium uppercase tracking-[0.08em] ${
                       active === link.href ? "text-gold" : ""
                     }`}
                   >
@@ -151,11 +148,11 @@ export function Navbar() {
                 </motion.li>
               ))}
             </ul>
-            <div className="mt-auto px-8 pb-8">
+            <div className="container-x mt-auto pb-8">
               <a
                 href="#reserver"
                 onClick={() => setOpen(false)}
-                className="btn-gold w-full"
+                className="btn-line w-full"
               >
                 Réserver un créneau
               </a>

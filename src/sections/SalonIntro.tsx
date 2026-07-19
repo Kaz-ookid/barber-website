@@ -28,7 +28,7 @@ export function SalonIntro() {
   const [active, setActive] = useState(0);
 
   return (
-    <RevealSection id="salon" className="relative py-24 md:py-32">
+    <RevealSection id="salon" className="bg-paper py-24 text-ink md:py-32">
       <div className="container-x">
         <SectionHeading
           kicker="Le salon"
@@ -37,8 +37,8 @@ export function SalonIntro() {
           lead="Av. de Tivoli 6, à deux pas de la gare de Lausanne. Un salon chaleureux, une équipe qui monte, et une exigence : que tu ressortes avec la bonne coupe."
         />
 
-        <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:gap-8">
-          <Reveal className="card relative min-h-[20rem] overflow-hidden">
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+          <Reveal className="relative min-h-[20rem] overflow-hidden">
             {points.map((point, i) => (
               <img
                 key={point.title}
@@ -50,13 +50,13 @@ export function SalonIntro() {
                 }`}
               />
             ))}
-            <div className="absolute inset-0 bg-gradient-to-t from-night/80 via-transparent to-transparent" />
-            <p className="absolute bottom-5 left-6 text-sm font-semibold">
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
+            <p className="absolute bottom-4 left-5 text-[11px] font-medium uppercase tracking-[0.25em] text-cream">
               {points[active].caption}
             </p>
           </Reveal>
 
-          <div className="hidden flex-col gap-6 md:flex">
+          <div className="hidden flex-col md:flex">
             {points.map((point, i) => (
               <Reveal key={point.title} delay={i * 0.08}>
                 <button
@@ -64,56 +64,53 @@ export function SalonIntro() {
                   onMouseEnter={() => setActive(i)}
                   onFocus={() => setActive(i)}
                   onClick={() => setActive(i)}
-                  className={`card h-full w-full px-6 py-6 text-left transition-all duration-300 ${
-                    active === i
-                      ? "border-gold/60 bg-gold/5 shadow-[0_0_35px_rgb(207_161_95/0.12)]"
-                      : "hover:border-cream/25"
+                  className={`w-full border-b border-ink/15 py-6 text-left transition-colors first:border-t ${
+                    active === i ? "" : "opacity-60 hover:opacity-90"
                   }`}
                 >
-                  <h3 className="font-display text-xl font-medium">
+                  <h3 className="font-display flex items-baseline gap-4 text-2xl font-medium uppercase tracking-[0.04em]">
                     <span
-                      className={`mr-3 text-sm font-semibold transition-colors ${
-                        active === i ? "text-gold" : "text-mist"
+                      className={`font-display text-base transition-colors ${
+                        active === i ? "text-gold" : ""
                       }`}
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     {point.title}
+                    {active === i && <span className="ml-auto h-px w-8 self-center bg-gold" />}
                   </h3>
-                  <p className="mt-2.5 text-sm leading-relaxed text-mist">{point.text}</p>
+                  <p className="mt-2.5 pl-10 text-sm leading-relaxed text-stone">{point.text}</p>
                 </button>
               </Reveal>
             ))}
           </div>
 
           <div className="md:hidden">
-            <div className="card min-h-[11rem] px-6 py-6">
-              <h3 className="font-display text-xl font-medium">
-                <span className="mr-3 text-sm font-semibold text-gold">
-                  {String(active + 1).padStart(2, "0")}
-                </span>
+            <div className="min-h-[10.5rem] border-y border-ink/15 py-5">
+              <h3 className="font-display flex items-baseline gap-3 text-xl font-medium uppercase">
+                <span className="text-gold">{String(active + 1).padStart(2, "0")}</span>
                 {points[active].title}
               </h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-mist">{points[active].text}</p>
+              <p className="mt-2 text-sm leading-relaxed text-stone">{points[active].text}</p>
             </div>
             <div className="mt-4 flex items-center justify-center gap-6">
               <button
                 type="button"
                 onClick={() => setActive((active + points.length - 1) % points.length)}
                 aria-label="Point précédent"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-gold"
+                className="flex h-10 w-10 items-center justify-center border border-ink/25 transition-colors hover:border-gold hover:text-gold"
               >
                 ←
               </button>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2.5">
                 {points.map((point, i) => (
                   <button
                     key={point.title}
                     type="button"
                     onClick={() => setActive(i)}
                     aria-label={`Aller au point ${i + 1}`}
-                    className={`h-2 w-2 rounded-full transition-colors ${
-                      active === i ? "bg-gold" : "bg-cream/20"
+                    className={`h-px w-5 transition-colors ${
+                      active === i ? "bg-gold" : "bg-ink/25"
                     }`}
                   />
                 ))}
@@ -122,7 +119,7 @@ export function SalonIntro() {
                 type="button"
                 onClick={() => setActive((active + 1) % points.length)}
                 aria-label="Point suivant"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-gold"
+                className="flex h-10 w-10 items-center justify-center border border-ink/25 transition-colors hover:border-gold hover:text-gold"
               >
                 →
               </button>
