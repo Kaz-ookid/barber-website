@@ -3,6 +3,6 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  base: "/barber-website/",
+  base: process.env.VITE_BASE ?? "/barber-website/",
   plugins: [react(), tailwindcss()],
 });
