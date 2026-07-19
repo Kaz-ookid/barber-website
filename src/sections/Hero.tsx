@@ -28,7 +28,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/35 to-transparent" />
       </motion.div>
 
-      <div className="container-x relative flex min-h-svh flex-col justify-center pb-16 pt-28">
+      <div className="container-x relative flex flex-col justify-center pb-14 pt-24 lg:min-h-svh lg:pb-16 lg:pt-28">
         <div className="max-w-xl">
           <motion.p {...fadeUp(0.1)} className="kicker">
             Barbershop · Av. de Tivoli 6, {site.city}
@@ -36,7 +36,7 @@ export function Hero() {
           <motion.span {...fadeUp(0.18)} className="rule-gold mt-4" />
           <motion.h1
             {...fadeUp(0.3)}
-            className="font-display mt-8 text-[13vw] font-medium uppercase leading-[1.02] tracking-[0.04em] sm:text-6xl lg:text-7xl"
+            className="font-display mt-6 text-[12vw] font-medium uppercase leading-[1.02] tracking-[0.04em] sm:text-6xl lg:mt-8 lg:text-7xl"
           >
             Coupe.
             <br />
@@ -44,6 +44,15 @@ export function Hero() {
             <br />
             Caractère.
           </motion.h1>
+          <motion.div {...fadeUp(0.4)} className="relative -mx-5 mt-7 h-[34vh] lg:hidden">
+            <img
+              src={images.hero}
+              alt="Travail aux ciseaux au salon Burtin Barber"
+              className="h-full w-full object-cover"
+              fetchPriority="high"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-ink/30 to-transparent" />
+          </motion.div>
           <motion.p {...fadeUp(0.45)} className="mt-7 max-w-md text-[15px] leading-relaxed text-mist md:text-base">
             Une coupe pensée pour ton visage, pas pour la tendance. Le
             barbershop de Rudy Burtin, au cœur de Lausanne.
@@ -86,20 +95,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Mobile image */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.4 }}
-        className="relative h-[52vh] lg:hidden"
-      >
-        <img
-          src={images.hero}
-          alt=""
-          className="h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink via-transparent to-transparent" />
-      </motion.div>
     </section>
   );
 }
