@@ -44,20 +44,23 @@ export function Hero() {
             <br />
             Caractère.
           </motion.h1>
-          <motion.div {...fadeUp(0.4)} className="relative -mx-5 mt-7 h-[34vh] lg:hidden">
+          <motion.div {...fadeUp(0.4)} className="relative -mx-5 mt-6 h-[44vh] lg:hidden">
             <img
               src={images.hero}
               alt="Travail aux ciseaux au salon Burtin Barber"
               className="h-full w-full object-cover"
               fetchPriority="high"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-ink/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-transparent to-ink" />
           </motion.div>
-          <motion.p {...fadeUp(0.45)} className="mt-7 max-w-md text-[15px] leading-relaxed text-mist md:text-base">
+          <motion.p
+            {...fadeUp(0.45)}
+            className="relative -mt-14 max-w-md text-[15px] leading-relaxed text-cream/80 md:text-base lg:mt-7 lg:text-mist"
+          >
             Une coupe pensée pour ton visage, pas pour la tendance. Le
             barbershop de Rudy Burtin, au cœur de Lausanne.
           </motion.p>
-          <motion.div {...fadeUp(0.6)} className="mt-10 flex flex-wrap items-center gap-5">
+          <motion.div {...fadeUp(0.6)} className="mt-8 flex flex-wrap items-center gap-5 lg:mt-10">
             <a href="#reserver" className="btn-line">
               Réserver un créneau
             </a>
