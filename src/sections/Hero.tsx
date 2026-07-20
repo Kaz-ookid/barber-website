@@ -67,13 +67,7 @@ export function Hero() {
         </div>
 
         <div className="relative mx-auto w-[86%] max-w-sm lg:w-full lg:max-w-none">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 0.5 }}
-            className="halo-spin absolute -inset-7 rounded-[3rem]"
-            aria-hidden
-          />
+          <div className="halo-spin absolute -inset-12" aria-hidden />
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}

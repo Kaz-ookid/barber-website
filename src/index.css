@@ -146,14 +146,24 @@ img {
   background: conic-gradient(
     from var(--halo-angle),
     transparent 0deg,
-    rgb(207 161 95 / 0.4) 40deg,
-    rgb(232 203 160 / 0.6) 60deg,
-    rgb(207 161 95 / 0.4) 80deg,
+    rgb(207 161 95 / 0.55) 40deg,
+    rgb(232 203 160 / 0.75) 60deg,
+    rgb(207 161 95 / 0.55) 80deg,
     transparent 130deg,
     transparent 190deg,
-    rgb(138 90 43 / 0.3) 235deg,
+    rgb(138 90 43 / 0.4) 235deg,
     transparent 290deg
   );
+  /* Fade the paint out before the element's own edges: the blur alone still
+     leaves a visible box when the browser rasterizes it into a layer. */
+  --halo-mask: radial-gradient(
+    ellipse closest-side,
+    #000 72%,
+    rgb(0 0 0 / 0.8) 88%,
+    transparent 100%
+  );
+  -webkit-mask-image: var(--halo-mask);
+  mask-image: var(--halo-mask);
   filter: blur(26px);
   animation: halo-rotate 16s linear infinite;
 }
